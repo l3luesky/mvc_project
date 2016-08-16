@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="BlueDoc">
+	
+	<select id="selectList" parameterType="com.com.com.dto.BoardSearch" resultType="com.com.com.dto.BlueDTO">
+		SELECT * FROM
+		TC_BOARD_DOC
+		ORDER BY DOC_ID DESC
+	</select>
+	
+	<insert id="insertData" parameterType="com.com.com.dto.BlueDTO">
+		<selectKey order="BEFORE" keyProperty="docId" resultType="int"> 
+			SELECT SEQ_BOARD_DOC.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TC_BOARD_DOC(
+			DOC_ID, TITLE, BOARD_CONTENTS, REG_DT, MAP_ID
+		)VALUES(
+			#{docId}, #{title}, #{boardContents}, sysdate, #{mapId}
+		)
+	</insert>
+	
+	<delete id="deleteData" parameterType="int">
+		DELETE TC_BOARD_DOC
+		WHERE DOC_ID = #{docId}
+	</delete>
+
+</mapper>

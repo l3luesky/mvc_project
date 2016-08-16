@@ -18,13 +18,13 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
-		<property name="username" value="sivilwar" />
-		<property name="password" value="ouchan12" />
+		<property name="username" value="blue"/>
+		<property name="password" value="ouchan12"/>
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 <!-- 		<property name="mapperLocations" value="classpath:/**/maps/*.xml" /> -->
 	</bean>
 
