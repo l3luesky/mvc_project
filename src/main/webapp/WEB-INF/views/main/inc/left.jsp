@@ -6,6 +6,8 @@
 
 <head>
 <c:import url="/WEB-INF/views/main/inc/head.jsp"></c:import>
+
+
 </head>
 
 <body id="[##_body_id_##]">
@@ -20,7 +22,7 @@
 		<div id="dkHead" role="banner" class="area_head">
 			<h1 class="screen_out">l3luesky</h1>
 			<button type="button" class="btn_cate">
-				<span class="ico_skin ico_cate">ì¹´íê³ ë¦¬</span>
+				<span class="ico_skin ico_cate">메뉴버튼</span>
 			</button>
 			<div class="area_search ">
 				<button type="button" class="btn_search">
@@ -29,12 +31,13 @@
 				<s_search>
 				<form action="#" method="get" class="frm_search box_search"
 					onsubmit="[##_search_onclick_submit_##]">
+					>
 					<fieldset>
 						<legend class="screen_out">ê²ìíê¸°</legend>
 						<label for="[##_search_name_##]" class="lab_search screen_out">Search</label>
 						<input type="text" name="[##_search_name_##]"
 							id="[##_search_name_##]" class="tf_search" placeholder="Search"
-							value="[##_search_text_##]" data-value="[##_search_text_##]">
+							value="검색기능개발중" data-value="[##_search_text_##]">
 						<span class="ico_skin ico_search"></span>
 					</fieldset>
 				</form>
@@ -42,7 +45,7 @@
 			</div>
 			<div class="area_profile">
 				<div class="tit_post">
-					<a href="/" class="link_post">l3luesky</a>
+					<a href="/com/main/index" class="link_post">l3luesky</a>
 				</div>
 				<span class="thumb_profile"> <img
 					src="../img/portfolio/cake.png" class="img_profile"
@@ -71,8 +74,7 @@
 											<strong class="tit_aside">Notice</strong>
 											<ul class="list_board">
 												<s_rct_notice_rep>
-												<li><a href="[##_notice_rep_link_##]"
-													class="link_board">[##_notice_rep_title_##]</a></li>
+												<li><p class="link_board">Developing...</p></li>
 												</s_rct_notice_rep>
 											</ul>
 										</div>
@@ -81,35 +83,41 @@
 											<strong class="tit_aside">Recent Posts</strong>
 											<ul class="list_board">
 												<s_rctps_rep>
-												<li><a href="[##_rctps_rep_link_##]" class="link_board">[##_rctps_rep_title_##]</a></li>
+<%-- 												<c:forEach items="${port}" var="list"> --%>
+<%-- 													<li><a href="[##_rctps_rep_link_##]" class="link_board">${list.title}</a></li> --%>
+<%-- 												</c:forEach> --%>
 												</s_rctps_rep>
 											</ul>
 										</div>
-										</s_sidebar_element> <s_sidebar_element> <!-- ìµê·¼ì ë¬ë¦° ëê¸ -->
-										<div class="box_aside">
-											<strong class="tit_aside">Recent Comments</strong>
-											<ul class="list_board">
-												<s_rctrp_rep>
-												<li><a href="[##_rctrp_rep_link_##]" class="link_board">[##_rctrp_rep_desc_##]</a></li>
-												</s_rctrp_rep>
-											</ul>
-										</div>
-										</s_sidebar_element> <s_sidebar_element> <!-- ë§í¬ -->
+										</s_sidebar_element>  <s_sidebar_element> <!-- ë§í¬ -->
 										<div class="box_aside">
 											<strong class="tit_aside">Link</strong>
 											<ul class="list_board">
 												<s_link_rep>
-												<li><a href="[##_link_url_##]" class="link_board"
-													target="_blank">[##_link_site_##]</a></li>
+												<li><a href="http://www.github.com/" class="link_board"
+													target="_blank">github</a></li>
+													<li><a href="http://www.naver.com/" class="link_board"
+													target="_blank">naver</a></li>
 												</s_link_rep>
 											</ul>
 										</div>
 										</s_sidebar_element> </s_sidebar>
 									</div>
 
-
 									<div class="col_aside right_side">
-										
+                                
+                                    <s_sidebar_element>
+                                        <!-- ê¸ ë³´ê´í¨ -->
+                                    <div class="box_aside box_archive">
+                                        <strong class="tit_aside">From</strong>
+                                        <ul class="list_keep">
+                                            <s_archive_rep>
+                                            <li>Kim.jaemin</li>
+                                            </s_archive_rep>
+                                        </ul>
+                                    </div>
+                                    </s_sidebar_element>
+
 									</div>
 								</div>
 							</div>
@@ -118,14 +126,10 @@
 
 						<strong class="screen_out">ê´ë¦¬ ë©ë´</strong>
 						<ul class="list_control">
-							<li><a href="/com/blue/write" class="ico_skin link_write"
-								title="write">글쓰기</a></li>
-							<li><a href="[##_guestbook_link_##]"
-								class="ico_skin link_memo" title="ë°©ëªë¡">ë°©ëªë¡</a></li>
-							<li><a href="[##_rss_url_##]" class="ico_skin link_rss"
+							
+							<li><a href="/com/main/index" class="ico_skin link_rss"
 								title="RSS">RSS</a></li>
-							<li><a href="[##_owner_url_##]" class="ico_skin link_manage"
-								title="ê´ë¦¬">ê´ë¦¬</a></li>
+							
 						</ul>
 					</div>
 				</div>

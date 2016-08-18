@@ -26,37 +26,19 @@ public class InsertController {
 	
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public void goWrite(Model model, Integer mapId){
+		logger.info("mapid=========>{}",mapId);
 		BoardMapDTO boardMapDTO = iBoardMapService.getData(mapId);
+		logger.info("=========>{}", boardMapDTO);
+		
 		model.addAttribute("map", boardMapDTO);
 	}
 	
 	@RequestMapping(value="/write", method=RequestMethod.POST)
 	@ResponseBody public ResponseDTO doWrite(BlueDTO blueDTO){
 		ResponseDTO responseDTO = new ResponseDTO();
-		
-		try{
-			iBlueDocService.saveData(blueDTO);
-			responseDTO.setResult(9);
-		}catch(Exception e){
-			e.printStackTrace();
-			logger.error("[ERROR]==>", e);
-			responseDTO.setResult(-1);
-			responseDTO.setErrorMsg("에러가 발생하였습니다. 관리자에게 문의하세요.");
-			return responseDTO;
-		}
-		
-		
-		return responseDTO;
-	}
-	
-	@RequestMapping(value="/bwrite", method=RequestMethod.GET)
-	public void bwrite(){
-	
-	}
-	
-	@RequestMapping(value="/bwrite", method=RequestMethod.POST)
-	@ResponseBody public ResponseDTO bwrite(BlueDTO blueDTO){
-		ResponseDTO responseDTO = new ResponseDTO();
+		logger.info("=========>{}",blueDTO.getMapId());
+		logger.info("=========>{}",blueDTO.getBoardContents());
+		logger.info("=========>{}",blueDTO.getTitle());
 		
 		try{
 			iBlueDocService.saveData(blueDTO);

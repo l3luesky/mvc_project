@@ -7,14 +7,25 @@
 
 <head>
 <c:import url="/WEB-INF/views/main/inc/head.jsp"></c:import>
+<c:import url="/WEB-INF/views/main/inc/left.jsp"></c:import>
 
 <script type="text/javascript">
 
-function goWrite(){
-	var url = "/com/blue/write";
-	var pMapId = "${map.mapId}";
-	$.get(url, {mapId : pMapId}, function(data){
-		$("#rightBlock").html(data);
+$(document).ready(function(){
+
+});
+
+function doDelete(docId){
+	var url = "/com/blue/remove";
+	$.post(url, {docId : docId}, function(data){
+		console.log('post')
+		if(data.result==0){
+			alert("성공적으로 삭제되었습니다.");
+			document.location.href="/com/main/index";
+		}else{
+			alert("조건이 맞지않습니다 다시 시도하세요.");
+			document.location.href="/com/main/index";
+		}
 	});
 }
 
@@ -25,28 +36,26 @@ function goWrite(){
 <body id="[##_body_id_##]">
 
 	<input type="hidden" name="mapId" value="${map.mapId}">
-<%-- <form id="frmSearch" name="frmSearch" class="search_area" onsubmit="return false;">
-	<input type="hidden" name="page" id="page" value="${search.page}">
-	<dl>
-		<dd>
-			<select name="searchType" id="searchType" style="height: 30px;">
-				<option value="">:: 선택 ::</option>
-				<option value="T">제목</option>
-				<option value="C">내용</option>
-				<option value="TC">제목+내용</option>
-				<option value="R">작성자</option>
-			</select>
-		</dd>
-		<dd>
-			<input type="text" name="searchText" value="${search.searchText}" style="width:200px; height: 30px;">
-		</dd>
-		<dd>
-			<button id="btnSearch" style="width:50px; height:30px;">검색</button>
-		</dd>
-	</dl>
+	<input type="hidden" name="docId" id="docId" value="${doc.docId}">
 	
-</form> --%>
+	<div id="mArticle" class="article_skin">
+		<c:forEach items="${list}" var="item">
+			<div class="list_content">
+					<strong class="tit_aside">${item.title}</strong>
+					<p class="txt_post">${item.boardContents}</p>
+				<div class="detail_info">
+					<span class="txt_date">
+					<fmt:formatDate value="${item.regDt}" pattern="yyyy-MM-dd"/>
+					<span class="txt_bar"></span>
+					<a href="#" class="disPB btnBase" onclick="doDelete('${item.docId}')">삭제</a>
+					</span>
+				</div>
+			</div>
+		</c:forEach>
+		
+		<br>
+		<a href="/com/blue/write?mapId=${map.mapId}" class="disPB btnBaseSet">게시글 작성</a>
+	</div>
 
-<a href="/com/blue/write" class="disPB btnBase">등록</a>
 </body>
 </html>

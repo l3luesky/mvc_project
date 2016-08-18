@@ -26,4 +26,14 @@ public class BlueDocDaoImpl extends SqlSessionDaoSupport implements IBlueDocDao 
 	public void delete(Integer docId) {
 		getSqlSession().delete("BlueDoc.deleteData",docId);
 	}
+
+	@Override
+	public BlueDTO selectData(BlueDTO blueDTO) {
+		return getSqlSession().selectOne("BlueDoc.selectData",blueDTO);
+	}
+
+	@Override
+	public List<BlueDTO> recentList(BlueDTO blueDTO) {
+		return getSqlSession().selectList("BlueDoc.recentList",blueDTO);
+	}
 }

@@ -11,7 +11,7 @@ public class BlueMapDaoImpl extends SqlSessionDaoSupport implements IBlueMapDao 
 
 	@Override
 	public BoardMapDTO selectData(Integer mapId) {
-		return getSqlSession().selectOne("BlueMap.selectList",mapId);
+		return getSqlSession().selectOne("BoardMap.selectList",mapId);
 	}
 
 

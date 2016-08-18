@@ -30,4 +30,16 @@ public class BlueDocServiceImpl implements IBlueDocService {
 	public void remove(Integer docId) {
 		iBlueDocDao.delete(docId);
 	}
+
+	@Override
+	public BlueDTO getData(BlueDTO blueDTO) {
+		return iBlueDocDao.selectData(blueDTO);
+	}
+
+	@Override
+	public List<BlueDTO> getRecent(BlueDTO blueDTO) {
+		return iBlueDocDao.recentList(blueDTO);
+	}
+
+
 }

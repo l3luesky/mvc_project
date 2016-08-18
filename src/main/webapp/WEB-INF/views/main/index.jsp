@@ -7,15 +7,38 @@
 <head>
 <c:import url="/WEB-INF/views/main/inc/head.jsp"></c:import>
 <c:import url="/WEB-INF/views/main/inc/left.jsp"></c:import>
+
+
+
+<script type="text/javascript">
+
+ 		$(document).ready(function(){
+			// 최근 공지사항 포틀릿 가져오기
+			getRecent();
+		
+		});
+		
+		function getRecent(){
+			var url = "/com/blue/portlet/list";
+			$.post(url, function(data){
+				$("#portletA").html(data);
+			});
+		}
+		
+</script>
+
+</head>
+
+
 </head>
 <body>
-    <div id="rightWrap">
-    	<div class="rightBlock" id="rightBlock">
-    		<div style="padding-top: 80px;">
-		    	소개 페이지입니다.	
-		    	asdfasdfasf
+    <div id="mArticle" class="article_skin">
+    		<div style="padding-bottom: 20px;">
+		    목록
     		</div>
-    	</div>
+    	
+   		<div id="portletA">
+   		</div>
 	</div>
 </body>
 </html>

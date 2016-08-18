@@ -19,7 +19,7 @@
 					if(this.parMapId == null){
 						dTree.add(this.mapId, -1, this.mapNm);
 					}else{
-						dTree.add(this.mapId, this.parMapId, this.mapNm, "javascript:getList("+this.mapId+")");
+						dTree.add(this.mapId, this.parMapId, this.mapNm, "/com/blue/gong?mapId="+this.mapId);
 					}
 				});
 				
@@ -44,7 +44,7 @@
 	
 </script>
 
-<div id="<ul class="tt_category">">
+<div id="">
 	<div class="dtree" id="dtree">
 	</div>
 </div>

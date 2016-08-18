@@ -11,4 +11,6 @@ public interface IBlueDocService {
 	public void saveData(BlueDTO blueDTO);
 	public List<BlueDTO> getList(BoardSearch search);
 	public void remove(Integer docId);
+	public BlueDTO getData(BlueDTO blueDTO);
+	public List<BlueDTO> getRecent(BlueDTO blueDTO);
 }

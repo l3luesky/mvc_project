@@ -12,7 +12,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	$("#writeSave").click(function(){
+	$("#btnWrite").click(function(){
 		$("#frmWrite").ajaxSubmit({
 			type: 'POST'
 			, url : '/com/blue/write'
@@ -20,17 +20,18 @@ $(document).ready(function(){
 			, beforeSubmit : function(){
 			}
 			, success : function(data){
-				if(data.result==0){
+				if(data.result==9){
 					alert("성공적으로 등록되었습니다.");
-					getList("${map.mapId}");
+					document.location.href="/com/main/index";
 				}else{
 					alert("등록이 실패하였습니다. 관리자에게 문의하세요.");
-					getList("${map.mapId}");
-				}
+					document.location.href="/com/main/index";
+				}				
 			}
 		});
 	});
 });
+
 </script>
 
 </head>
@@ -45,25 +46,28 @@ $(document).ready(function(){
 			</h2>
 		</div>
 		</s_list>
-		
-		<form id="frmWrite" method="POST" action="#">
-		<input type="hidden" name="mapId" value="${map.mapId}"/>
+
+		<form id="frmWrite" action="/com/blue/write" method="post">
+			<input type="hidden" name="mapId" value="${map.mapId}" />
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="title" placeholder="제목입력"
 					title="제목을 입력하세요" required="required"></td>
-			</tr><br><br>
+			</tr>
+			<br>
+			<br>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="boardContents" title="내용을 입력하세요" placeholder="내용입력" 
-						required="required"></textarea></td>
+				<td><textarea name="boardContents" title="내용을 입력하세요"
+						placeholder="내용입력" required="required"></textarea></td>
 			</tr>
-			<div class="btnSet alignCenter">
-			<br>
-				<a href="#" class="disPB btnBase" id="writeSave">저장</a>
-				<a href="/com/main/index" class="disPB btnBase">취소</a>
-			</div>
 		</form>
+		
+		<div class="btnSet alignCenter"><br>
+			<a href="#" class="disPB btnBase" id="btnWrite">저장</a>
+			<a href="/com/main/index" class="disPB btnBase">취소</a>
+		</div>
+		
 	</div>
 </body>
 </html>
